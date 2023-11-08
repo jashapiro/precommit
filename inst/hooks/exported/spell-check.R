@@ -42,12 +42,16 @@ if (nrow(spelling_errors) > 0) {
   ignore_df <- ignore_df[order(ignore_df$lower, method = "radix"), ]
   ignore <- ignore_df$original[ignore_df$lower != ""] # drop blanks if any
   writeLines(ignore, path_wordlist)
-  cat(
-    "All spelling errors found were copied to inst/WORDLIST assuming they were",
+    cat(
+    "All spelling errors found were copied to ",
+    path_wordlist,
+    " assuming they were",
     "not spelling errors and will be ignored in the future. Please ",
     "review the above list and for each word that is an actual typo:\n",
     "- fix it in the source code.\n",
-    "- remove it again manually from inst/WORDLIST to make sure it's not\n",
+    "- remove it again manually from ", 
+    path_wordlist,
+    " to make sure it's not\n",
     "  ignored in the future.\n",
     "Then, try committing again.\n"
   )
