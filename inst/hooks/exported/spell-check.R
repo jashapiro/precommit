@@ -2,15 +2,16 @@
 
 "Spell check for files
 Usage:
-  spell-check [--lang=<language>] <files>...
+  spell-check [--lang=<language>] [--wordlist=<wordlist_path>] <files>...
 
 Options:
   --lang=<language> Passed to `spelling::spell_check_files()` [default: en_US]
+  --wordlist=<wordlist_path> Path to the word list file [default: inst/WORDLIST]
 
 " -> doc
 
 arguments <- precommit::precommit_docopt(doc)
-path_wordlist <- file.path("inst", "WORDLIST")
+path_wordlist <- arguments$wordlist
 files <- arguments$files
 if (file.exists(path_wordlist)) {
   ignore <- readLines(path_wordlist, encoding = "UTF-8")
