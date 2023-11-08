@@ -43,6 +43,7 @@ if (nrow(spelling_errors) > 0) {
   ignore <- ignore_df$original[ignore_df$lower != ""] # drop blanks if any
   writeLines(ignore, path_wordlist)
   cat(glue::glue("
+    
     All spelling errors found were copied to {path_wordlist} assuming they were not spelling errors and will be ignored in the future.
     Please review the above list and for each word that is an actual typo:
     - fix it in the source code
@@ -50,7 +51,7 @@ if (nrow(spelling_errors) > 0) {
       ignored in the future.
     Then, try committing again.
     
-  "))
+    "))
   stop("Spell check failed", call. = FALSE)
 } else {
   ignore <- ignore[ignore != ""] # drop blanks if any
